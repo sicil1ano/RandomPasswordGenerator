@@ -9,7 +9,7 @@ namespace PasswordGenerator
     class Program
     {
         static string newPassword;
-        static PasswordGenerator passGen;
+        static PasswordGenerator passGen = new PasswordGenerator();
         static bool newPasswordCreation = true;
         static bool exitApplication;
 
@@ -23,6 +23,7 @@ namespace PasswordGenerator
                 Console.WriteLine("A strong password must have at least 8 characters.");
                 newPassword = PasswordCreation();
                 DisplayPassword(newPassword);
+                DisplayPasswordMD5Hash(newPassword);
                 ShowCopyToClipboardHint();
                 CreateNewPasswordHint();
             }
@@ -45,9 +46,13 @@ namespace PasswordGenerator
             Console.WriteLine("New random password created! --> " + password);
         }
 
+        static void DisplayPasswordMD5Hash(string password)
+        {
+            Console.WriteLine("With an MD5 hash of --> " + passGen.calcMD5Hash(password));
+        }
+
         static string PasswordCreation()
         {
-            passGen = new PasswordGenerator();
             string password = passGen.createPassword();
             return password;
         }
@@ -84,6 +89,7 @@ namespace PasswordGenerator
             Console.Write("\b");
             switch (key.Key)
             {
+                case ConsoleKey.Enter: // Assume Enter = Y
                 case ConsoleKey.Y:
                     CopyPasswordToClipboard(newPassword);
                     Console.WriteLine("The password has been copied to your clipboard!");
