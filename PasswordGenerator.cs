@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace PasswordGenerator
@@ -25,6 +26,21 @@ namespace PasswordGenerator
 
 
             return key.ToString();
+        }
+
+        public string calcMD5Hash(string pwd)
+        {
+            MD5 md5 = MD5.Create();
+            StringBuilder sb = new StringBuilder();
+
+            byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(pwd));
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+
+            return sb.ToString();
         }
 
         private String twoChars(int size)
