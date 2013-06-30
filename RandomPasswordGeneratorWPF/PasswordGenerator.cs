@@ -4,11 +4,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RandomPasswordGenerator
+namespace RandomPasswordGeneratorWPF
 {
     public class PasswordGenerator
     {
-        public string createPassword()
+        public string CreatePassword()
         {
             string strPwdchar = "abcdefghijklmnopqrstuvwxyz0123456789#+@&$!?*ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             int charNum = 8;
@@ -21,14 +21,14 @@ namespace RandomPasswordGenerator
                 key.Append(strPwdchar.Substring(randNum, 1));
             }
 
-            key.Append(twoChars(2));
+            key.Append(TwoChars(2));
             key.Append(number);
 
 
             return key.ToString();
         }
 
-        public string calcMD5Hash(string pwd)
+        public string CalcMD5Hash(string pwd)
         {
             MD5 md5 = MD5.Create();
             StringBuilder sb = new StringBuilder();
@@ -43,7 +43,7 @@ namespace RandomPasswordGenerator
             return sb.ToString();
         }
 
-        private String twoChars(int size)
+        private String TwoChars(int size)
         {
             StringBuilder stringObtained = new StringBuilder();
             Random rm = new Random();

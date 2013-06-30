@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace PasswordGenerator
+namespace RandomPasswordGenerator
 {
     class Program
     {
