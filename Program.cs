@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using PassGenLogic;
 
 namespace RandomPasswordGenerator
 {
@@ -48,12 +49,12 @@ namespace RandomPasswordGenerator
 
         static void DisplayPasswordMD5Hash(string password)
         {
-            Console.WriteLine("With an MD5 hash of --> " + passGen.calcMD5Hash(password));
+            Console.WriteLine("With an MD5 hash of --> " + passGen.CalcMD5Hash(password));
         }
 
         static string PasswordCreation()
         {
-            string password = passGen.createPassword();
+            string password = passGen.CreatePassword();
             return password;
         }
 
